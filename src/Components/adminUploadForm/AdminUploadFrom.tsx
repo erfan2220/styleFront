@@ -40,7 +40,7 @@ export default function AdminUploadFrom()
         const data = await response.json();
         setUploadStatus(data.message || "File uploaded successfully!");
     }
-    catch (error) {
+    catch{
         setUploadStatus("Failed to upload the image.");
     }
  }
