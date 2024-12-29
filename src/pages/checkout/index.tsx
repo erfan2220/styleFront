@@ -1,11 +1,11 @@
-//@ts-nocheck
+
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store/store';
 import { updateQuantity, removeItem, clearCart } from '@/store/slices/cartSlice';
 import MainLayout from '@/layouts/MainLayout';
 import { useState } from 'react';
-import {useMutation} from "@tanstack/react-query";
-import {createOrder} from "@/services/orderService";
+// import {useMutation} from "@tanstack/react-query";
+// import {createOrder} from "@/services/orderService";
 import {useRouter} from "next/router";
 
 export default function CheckoutPage()
@@ -22,17 +22,17 @@ export default function CheckoutPage()
         address:''
     })
 
-    const [formError, setFormError] = useState<string | null>(null)
+    // const [formError, setFormError] = useState<string | null>(null)
 
-    const { mutate: createOrderMutation } = useMutation({
-        mutationFn: createOrder, // The function that returns a promise
-        onSuccess: (data) => {
-            console.log("Order created:", data);
-        },
-        onError: (error) => {
-            console.error("Error creating order:", error);
-        },
-    });
+    // const { mutate: createOrderMutation } = useMutation({
+    //     mutationFn: createOrder, // The function that returns a promise
+    //     onSuccess: (data) => {
+    //         console.log("Order created:", data);
+    //     },
+    //     onError: (error) => {
+    //         console.error("Error creating order:", error);
+    //     },
+    // });
 
 
 
@@ -45,14 +45,14 @@ export default function CheckoutPage()
         }));
     };
 
-    const validateForm = () => {
-        if (!billingInfo.name || !billingInfo.email || !billingInfo.address) {
-            setFormError('All fields are required.');
-            return false;
-        }
-        setFormError(null);
-        return true;
-    };
+    // const validateForm = () => {
+    //     if (!billingInfo.name || !billingInfo.email || !billingInfo.address) {
+    //         setFormError('All fields are required.');
+    //         return false;
+    //     }
+    //     setFormError(null);
+    //     return true;
+    // };
 
     // const handleSubmitOrder = () => {
     //     if (!validateForm()) return;
@@ -150,7 +150,7 @@ export default function CheckoutPage()
                                     name="address"
                                     placeholder="Address"
                                     value={billingInfo.address}
-                                    onChange={handleBillingChange}
+                                    onChange={()=>handleBillingChange}
                                     className="w-full p-2 border border-gray-300 rounded"
                                 />
                             </div>
