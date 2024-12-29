@@ -36,7 +36,7 @@ export default async function handler(req, res) {
                 message: "File uploaded successfully!",
                 filePath: `/images/${fileName}`,
             });
-        } catch (err) {
+        } catch {
             res.status(500).json({ error: "File upload failed!" });
         }
     } else {

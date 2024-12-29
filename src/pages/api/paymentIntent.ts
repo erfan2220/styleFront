@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             });
 
             res.status(200).json({ clientSecret: paymentIntent.client_secret });
-        } catch (error) {
+        } catch  {
             res.status(500).json({ error: 'Internal Server Error' });
         }
     } else {
