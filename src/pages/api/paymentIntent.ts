@@ -5,6 +5,7 @@ const stripe = new Stripe('your-stripe-secret-key', {
     apiVersion: '2020-08-27',
 });
 
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
         try {
