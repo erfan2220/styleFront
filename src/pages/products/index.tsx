@@ -1,4 +1,4 @@
-//@ts-nocheck
+
 import Link from 'next/link';
 import MainLayout from '@/layouts/MainLayout';
 import { useDispatch } from 'react-redux';
