@@ -10,7 +10,7 @@ export const config = {
 }
 
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
     if (req.method === "POST") {
         const form = new formidable.IncomingForm();
         form.uploadDir = path.join(process.cwd(), "public/images"); // Upload to 'public/images'
