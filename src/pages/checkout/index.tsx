@@ -54,16 +54,16 @@ export default function CheckoutPage()
         return true;
     };
 
-    const handleSubmitOrder = () => {
-        if (!validateForm()) return;
-
-        const orderData = {
-            billingInfo,
-            items: cart.items,
-            totalPrice: cart.totalPrice,
-        };
-        createOrderMutation(orderData);
-    };
+    // const handleSubmitOrder = () => {
+    //     if (!validateForm()) return;
+    //
+    //     const orderData = {
+    //         billingInfo,
+    //         items: cart.items,
+    //         totalPrice: cart.totalPrice,
+    //     };
+    //     createOrderMutation(orderData);
+    // };
 
 
     const handleRemove = (id: string) => {
