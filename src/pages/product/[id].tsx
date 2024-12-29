@@ -6,34 +6,59 @@ import { useDispatch } from 'react-redux';
 import { addItem } from '@/store/slices/cartSlice';
 import { getProductById } from '@/services/productServices';
 
+interface Product {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+}
+
+interface CartItem {
+    id: string;
+    name: string;
+    price: number;
+    quantity: number;
+}
 
 const ProductDetail = () =>
 {
 
     const router = useRouter();
+    const dispatch = useDispatch();
     const { id } = router.query; // Get the product ID from the URL
 
-    const {data:product,isLoading,error}=useQuery(
+    const {data:product,isLoading,error}=useQuery<Product>(
         ['product',id],
         ()=>getProductById(id as string),
-        {enabled: !!id}
+        { enabled: !!id }
     );
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading product</div>;
+    if (error) return <div>Error loading product details. Please try again.</div>;
+    if (!product) return <div>Product not found.</div>;
 
-    const dispatch = useDispatch();
 
     // Find the product from the list
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading product</div>;
+    if (error || !product) return <div>Error loading product</div>;
 
 
-    const handleAddToCart = () => {
-       if(product){
-           dispatch(addItem({...product,quantity:1}))
-       }
+    const handleAddToCart = () =>
+    {
+
+        const cartItem: CartItem = {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            quantity: 1, // Default quantity
+        };
+
+
+        dispatch(addItem(cartItem));
+
+        // dispatch(addItem({ ...product, quantity: 1 })); // Default quantity: 1
     };
+
 
     return (
         <div className="p-8">
