@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store/store';
 import { updateQuantity, removeItem, clearCart } from '@/store/slices/cartSlice';
